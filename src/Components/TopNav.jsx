@@ -9,12 +9,8 @@ const TopNav = () => {
                 {/* <Navbar.Brand as={Link} to="/">Three In a Row</Navbar.Brand> */}
                 <Navbar.Brand>Three In a Row</Navbar.Brand>
                 <Nav className="me-auto">
-                    {/* <Nav.Link as={Link} to="/sample">Sample</Nav.Link>
-                    <Nav.Link as={Link} to="/random">Random</Nav.Link> */}
-                    <li>Sample</li>
-                    <li>Random</li>
-                    <li>Themes</li>
-                    <li>Day/Night</li>
+                    <Nav.Link as={Link} to="/sample">Sample</Nav.Link>
+                    <Nav.Link as={Link} to="/random">Random</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

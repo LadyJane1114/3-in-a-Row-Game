@@ -1,34 +1,39 @@
 import axios from "axios"
 import { useEffect, useState} from "react"
+import Square from "./Square"
 
 const Sample = () => {
-    const [sample, setSample] = useState([])
+    const [sample, setSample] = useState({ rows: [] });
+    const [mode, setMode] = useState("lightMode");
+    const [selectedTheme, setSelectedTheme] = useState("default");
 
   useEffect(() => {
     const apuSampleURL = 'https://prog2700.onrender.com/threeinarow/sample'
 
     axios.get(apuSampleURL).then((response) => {
-        setUsers(response.data)
+        setSample(response.data)
     });
 
   }, [])
 
   return (
     <>
-    <div className="sampleBoard">
-        {
-            data.rows.map((row, rowIndex) => (
-                <div key={rowIndex} className="row">
+      <div className="sampleBoard">
+          {sample.rows.map((row, rowIndex) => (
+              <div key={rowIndex} className="row">
                   {row.map((cell, colIndex) => (
-                    <div key={`${rowIndex}-${colIndex}`} className="cell">
-                      State: {cell.currentState} (Correct: {cell.correctState}) 
-                      {cell.canToggle ? "true" : "false"}
-                    </div>
+                      <Square
+                        key={`${rowIndex}-${colIndex}`}
+                        currentState={cell.currentState}
+                        correctState={cell.correctState}
+                        canToggle={cell.canToggle}
+                        mode={mode}
+                        onClick={() => handleCellClick(rowIndex, colIndex)}
+                      />
                   ))}
-                </div>
-              ))
-        }
-    </div>
+              </div>
+          ))}
+      </div>
     </>
   )
 }

@@ -1,8 +1,10 @@
 // THIS PAGE IS RESPONSIBLE FOR CHANGING THE COLORS OF THE SQUARES (THE STATE?)
 
-const Square = () => {
+const Square = (value) => {
   return (
-    <div>Square</div>
+    <>
+    {value}
+    </>
   )
 }
 

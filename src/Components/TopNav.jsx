@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Nav, Navbar, Container } from "react-bootstrap"
-
+// THE MENU
 const TopNav = () => {
   return (
     <>
@@ -13,6 +13,8 @@ const TopNav = () => {
                     <Nav.Link as={Link} to="/random">Random</Nav.Link> */}
                     <li>Sample</li>
                     <li>Random</li>
+                    <li>Themes</li>
+                    <li>Day/Night</li>
                 </Nav>
             </Container>
         </Navbar>

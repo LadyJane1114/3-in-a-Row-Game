@@ -10,14 +10,7 @@ const Board = ({boardState}) => {
           {boardState.rows.map((row, rowIndex) => (
             <div key={rowIndex} className="row">
               {row.map((cell, colIndex) => (
-                <Square
-                    key={`${rowIndex}-${colIndex}`}
-                    currentState={cell.currentState}
-                    correctState={cell.correctState}
-                    canToggle={cell.canToggle}
-                    mode={mode}
-                    onClick={() => handleCellClick(rowIndex, colIndex)}
-                />
+                <Square/>
               ))}
             </div>
           ))}

@@ -45,7 +45,8 @@ const Square = ({currentState, correctState, canToggle, mode = 'lightMode'}) => 
         borderRadius: "25%",
         color: themes.text,
         textAlign: "center",
-        lineHeight: "50px"
+        lineHeight: "50px",
+        margin: "1.5px"
       }}
       onClick={() => canToggle && onClick()}
     >

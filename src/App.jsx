@@ -2,24 +2,17 @@ import { useState } from 'react'
 import { Link, Routes, Route} from 'react-router-dom'
 import './App.css'
 import Game from './Components/Game'
-import TopNav from './Components/TopNav'
-import Random from './Components/Random'
-import Sample from './Components/Sample'
+import Board from './Components/Board'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <TopNav/>
-      <Game/>
-
-      <Routes>
-        <Route path="/random" element={<Random/>}/>
-        <Route path="/sample" element={<Sample/>}/>
-      </Routes>
-      
-
+    <h1>Three in a Row</h1>
+    <Link as={Link} to={[testingURL[0]]}></Link>
+    <Link as={Link} to={[testingURL[1]]}></Link>
+    <Game/>
     </>
   )
 }

@@ -1,6 +1,6 @@
 // THIS PAGE IS RESPONSIBLE FOR CHANGING THE COLORS OF THE SQUARES (THE STATE?)
 
-const Square = ({currentState, correctState, canToggle, mode}) => {
+const Square = ({currentState, correctState, canToggle, mode = 'lightMode'}) => {
   const colorPalettes = {
     lightMode: {
         cell1: "#D76C82",
@@ -51,6 +51,6 @@ const Square = ({currentState, correctState, canToggle, mode}) => {
     >
       {currentState}</div>
   );
-}
+};
 
 export default Square

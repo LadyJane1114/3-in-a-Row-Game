@@ -1,5 +1,5 @@
 import { Link, Routes, Route} from 'react-router-dom'
-import './App.css'
+import './css/App.css'
 import Game from './Components/Game'
 import TopNav from './Components/TopNav'
 
@@ -10,7 +10,7 @@ function App() {
       <h1>Three in a Row</h1>
       <TopNav/>
       <Routes>
-        <Route path="/game" element={<Game />} />
+        <Route path="/game" element={<Game/>} />
       </Routes>
     </>
   );

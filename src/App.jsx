@@ -5,7 +5,6 @@ import TopNav from './Components/TopNav'
 
 function App() {
   
-
   return (
     <>
       <h1>Three in a Row</h1>

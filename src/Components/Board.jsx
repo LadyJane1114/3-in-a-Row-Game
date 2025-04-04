@@ -9,6 +9,7 @@ const Board = ({boardState, colorPalettes, mode}) => {
     return <p>No puzzle here!</p>;
   }
   
+  
   const checkPuzzle = () => {
     let isCorrect = true;
     let isEmpty = false;
@@ -58,7 +59,7 @@ const Board = ({boardState, colorPalettes, mode}) => {
         {boardState.rows.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, colIndex) => (
-              <Square key={colIndex} cell={cell} colorPalettes={colorPalettes} mode={mode}/>
+              <Square key={`${rowIndex}-${colIndex}`} cell={cell} colorPalettes={colorPalettes} mode={mode}/>
             ))}
       </div>
     ))}

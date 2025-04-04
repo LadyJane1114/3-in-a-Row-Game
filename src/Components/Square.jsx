@@ -3,37 +3,40 @@ import { useEffect, useState } from "react";
 // THIS PAGE IS RESPONSIBLE FOR CHANGING THE COLORS OF THE SQUARES (THE STATE?)
 
 const Square = ({cell, colorPalettes, mode}) => {
-  const [currentState, setCurrentState] = useState(cell.state);
+  const isLocked = !cell.canToggle;
+
+  const [currentState, setCurrentState] = useState(
+    !cell.canToggle ? cell.correctState : cell.state
+  );
+
+  useEffect(() => {
+    setCurrentState(isLocked ? cell.correctState : cell.state);
+  }, [cell.correctState, cell.state, isLocked]);
 
   const flipCellColor = () => {
     const themeColors = colorPalettes[mode];
-    let color;
 
-    if (currentState === "1") {
-      color = themeColors.cell1;
-    } else if (currentState === "2") {
-      color = themeColors.cell2;
-    } else {
-      color = "transparent";
+    switch (currentState) {
+      case 1:
+        return themeColors.cell1;
+      case 2:
+        return themeColors.cell2;
+      default:
+        return "transparent";
     }
-
-    return color;
   };
 
   const cycleCellState = () => {
-    const nextState = currentState === "1" ? "2" : "1";
+    if (isLocked) return;
+    const nextState = currentState === 1 ? 2 : 1;
     setCurrentState(nextState);
   };
 
-  useEffect(() => {
-    const squareElement = document.getElementById(`square-${cell.id}`);
-    squareElement.style.backgroundColor = flipCellColor();
-  }, [currentState]);
   
   return (
     <div
       id={`square-${cell.id}`}
-      className="square"
+      className={`square ${isLocked ? "locked" : ""}`}
       style={{
         width: "50px",
         height: "50px",
@@ -42,13 +45,13 @@ const Square = ({cell, colorPalettes, mode}) => {
         textAlign: "center",
         lineHeight: "50px",
         margin: "1.5px",
-        backgroundColor: flipCellColor()
+        backgroundColor: flipCellColor(),
+        cursor: isLocked ? "not-allowed" : "pointer",
       }}
-      onClick={() => {
-        cycleCellState();
-      }}
+      onClick={cycleCellState}
+      data-state={currentState}
+      data-correct={cell.correctState}
     >
-      {currentState}
     </div>
   );
 };

@@ -14,10 +14,10 @@ const Board = ({boardState, colorPalettes, mode}) => {
     let isCorrect = true;
     let isEmpty = false;
 
-    document.querySelectorAll("td").forEach((td) => {
-      const userState = td.dataset.state;
-      const correctState = td.dataset.correct;
-
+    document.querySelectorAll(".square").forEach((div) => {
+      const userState = div.dataset.state;
+      const correctState = div.dataset.correct;
+    
       if (!userState || userState === "0") {
         isEmpty = true;
       } else if (userState !== correctState) {
@@ -46,11 +46,20 @@ const Board = ({boardState, colorPalettes, mode}) => {
 
   const showMeWhatsWrong = () => {
     const showErrors = document.getElementById("showErrors").checked;
-    document.querySelectorAll("td").forEach((td) => {
-      const userState = td.dataset.state;
-      const correctState = td.dataset.correct;
-      td.style.outline =
-        userState !== correctState && showErrors ? "2px solid firebrick" : "none";
+  
+    document.querySelectorAll(".square").forEach((div) => {
+      const userState = div.dataset.state;
+      const correctState = div.dataset.correct;
+      const isLocked = div.classList.contains("locked");
+  
+      if (!isLocked) {
+        if (!userState || userState === "0") {
+          div.style.outline = "none";
+        } else {
+          div.style.outline =
+            userState !== correctState && showErrors ? "2px solid firebrick" : "none";
+        }
+      }
     });
   };
 

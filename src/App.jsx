@@ -1,8 +1,8 @@
 import {Routes, Route, useSearchParams} from 'react-router-dom'
+import { useState, useEffect } from 'react';
 import './css/App.css'
 import Game from './Components/Game'
 import TopNav from './Components/TopNav'
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {

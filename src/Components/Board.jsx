@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import Square from "./Square"
 
 
-//THIS PAGE IS RESPONSIBLE FOR CREATING THE FRAMEWORK OF THE BOARD WITH THE SQUARES USED IN SQUARE
-//CAN YOU IMPORT THE URL VIA AXIOS IN ONE COMPONENT AND APPLY IT TO THE THINGS IN A DIFFERENT COMPONENT?
 const Board = ({boardState, colorPalettes, mode}) => {
   if (!boardState || !boardState.rows) {
     return <p>No puzzle here!</p>;
@@ -33,7 +30,6 @@ const Board = ({boardState, colorPalettes, mode}) => {
       alert("Something is wrong.");
     }
 
-    // Display the result message
     const resultMessage = document.getElementById("result");
     if (isCorrect && !isEmpty) {
       resultMessage.classList.add("resultMessage");

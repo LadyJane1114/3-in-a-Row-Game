@@ -70,6 +70,9 @@ useEffect(() => {
       <Routes>
         <Route path="/game" element={<Game boardState={boardState} colorPalettes={colorPalettes} mode={mode}/>} />
       </Routes>
+      <footer>
+        <div className="copyright">&copy; Jane Scott 2025</div>
+      </footer>
     </>
   );
 }

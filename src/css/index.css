@@ -43,3 +43,8 @@ button {
 #result {
   font-family: "Sofadi One", system-ui;
 }
+
+.copyright {
+  font-family: "Sofadi One", system-ui;
+  padding-top: 30px;
+}

@@ -27,7 +27,7 @@ const Board = ({boardState, colorPalettes, mode}) => {
     } else if (isCorrect && !isEmpty) {
       alert("You solved it!");
     } else {
-      alert("Something is wrong.");
+      alert("Hmm... Something's not right. You can always use the checkbox below to show you what's wrong!");
     }
 
     const resultMessage = document.getElementById("result");
@@ -50,12 +50,21 @@ const Board = ({boardState, colorPalettes, mode}) => {
   
       if (!isLocked) {
         if (!userState || userState === "0") {
-          div.style.outline = "none";
+            div.style.outline = "none";
+            div.innerHTML = "";
         } else {
-          div.style.outline =
-            userState !== correctState && showErrors ? "2px solid firebrick" : "none";
+            if (userState !== correctState && showErrors) {
+                div.innerHTML = "No!!";
+                div.style.color = "#EBE8DB";
+                div.style.fontSize = "10px";
+                div.style.textAlign = "justified";
+                div.style.lineHeight = "50px";
+                div.style.fontWeight - "bold";
+            } else {
+                div.innerHTML = "";
+            }
+          }
         }
-      }
     });
   };
 
@@ -69,9 +78,11 @@ const Board = ({boardState, colorPalettes, mode}) => {
       </div>
     ))}
 
-
+      <br/>
       <button id="checkBTN" onClick={checkPuzzle}>Check Puzzle</button>
       <br/>
+      <br/>
+      <label htmlFor="showErrors" className="showMeLabel">Show Me What's Wrong!</label>
       <input type="checkbox" id="showErrors" onChange={showMeWhatsWrong} />
       <div id="result" style={{ display: "none" }}> You did it! </div>
     </div>

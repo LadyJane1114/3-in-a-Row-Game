@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-const TopNav = ({mode,setMode, colorPalettes}) => {
+const TopNav = ({mode,toggleMode, setMode, colorPalettes}) => {
     const testingURLs = [
         "https://prog2700.onrender.com/threeinarow/random",
         "https://prog2700.onrender.com/threeinarow/sample"
@@ -18,17 +18,6 @@ const TopNav = ({mode,setMode, colorPalettes}) => {
         document.body.style.backgroundColor = themeColors.background;
         document.body.style.color = themeColors.text;
 
-        document.querySelectorAll("td").forEach(cell => flipCellColor(cell));
-        document.querySelectorAll("button").forEach(button => {
-            button.style.backgroundColor = themeColors.buttonBackground;
-            button.style.color = themeColors.buttonText;
-        });
-        document.querySelectorAll("input, textarea, select").forEach(input => {
-            input.style.backgroundColor = themeColors.inputBackground;
-            input.style.borderColor = themeColors.border;
-            input.style.color = themeColors.text;
-        });
-
         let toggle = document.querySelector(".switch input");
         if (toggle) {
             toggle.style.backgroundColor = themeColors.toggle;
@@ -37,11 +26,6 @@ const TopNav = ({mode,setMode, colorPalettes}) => {
         document.body.classList.toggle("darkMode", mode === "darkMode");
     }
 
-    function toggleMode() {
-        let newMode = mode === "darkMode" ? "lightMode" : "darkMode";
-        setMode(newMode);
-        localStorage.setItem("mode", newMode);
-    }
       
   return (
     <>
@@ -49,8 +33,15 @@ const TopNav = ({mode,setMode, colorPalettes}) => {
         <br/>
         <Link to={`/game?url=${encodeURIComponent(testingURLs[1])}`}>Sample</Link>
         <br/>
+
+
         <label className="darkLightMode">
-        <input type="checkbox" id="darkmodeToggle" checked={mode==="lightMode"} onChange={toggleMode}/>
+        <input 
+          type="checkbox" 
+          id="darkmodeToggle" 
+          checked={mode==="lightMode"} 
+          onChange={toggleMode}
+          />
         <span className="onOffSliderRound">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-moon-stars-fill" viewBox="0 0 16 16">
             <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
@@ -61,6 +52,7 @@ const TopNav = ({mode,setMode, colorPalettes}) => {
           </svg>
         </span>
       </label>
+      
     </>
   )
 }

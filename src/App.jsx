@@ -16,28 +16,42 @@ function App() {
       cell2: "#B03052",
       background: "#EBE8DB",
       text: "#3D0301",
-      errorOutline: "#D72638",
       toggle: "#3D0301",
       buttonBackground: "#B03052",
-      buttonText: "#FFFFFF",
-      inputBackground: "#F8E8E0",
-      border: "#3D0301"
+      buttonText: "#EBE8DB",
+      border: "#3D0301",
+      link: "#3D0301",
+      linkHover: "#D76C82"
     },
     darkMode: {
       cell1: "#B03052",
       cell2: "#D76C82",
       background: "#3D0301",
       text: "#EBE8DB",
-      errorOutline: "#B71C1C",
       toggle: "#EBE8DB",
       buttonBackground: "#B03052",
-      buttonText: "#FFFFFF",
-      inputBackground: "#B03052",
-      border: "#3D0301"
+      buttonText: "#EBE8DB",
+      border: "#EBE8DB",
+      link: "#EBE8DB",
+      linkHover: "#D76C82"
     },
   };
 
   const [mode, setMode] = useState('lightMode');
+
+  function toggleMode() {
+    let newMode = mode === "darkMode" ? "lightMode" : "darkMode";
+    setMode(newMode);
+    localStorage.setItem("mode", newMode);
+}
+
+useEffect(() => {
+  const currentPalette = colorPalettes[mode];
+  document.documentElement.style.setProperty('--link-color', currentPalette.link +"!imporant");
+  document.documentElement.style.setProperty('--link-hover-color', currentPalette.linkHover);
+  document.documentElement.style.setProperty('--buttonBackground-color',currentPalette.buttonBackground)
+  document.documentElement.style.setProperty('--buttonText-color',currentPalette.buttonText)
+}, [mode]);
 
   
   
@@ -52,7 +66,7 @@ function App() {
     return (
     <>
       <h1>Three in a Row</h1>
-      <TopNav mode={mode} setMode={setMode} colorPalettes={colorPalettes}/>
+      <TopNav mode={mode} toggleMode={toggleMode} setMode={setMode} colorPalettes={colorPalettes}/>
       <Routes>
         <Route path="/game" element={<Game boardState={boardState} colorPalettes={colorPalettes} mode={mode}/>} />
       </Routes>

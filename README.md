@@ -1,6 +1,12 @@
 # 3-in-a-Row Game
 
-This is a 3-in-a-row game inspired by <a href="https://www.brainbashers.com/show3inarow.asp">Brain Basher's Daily 3-in-a-Row Game</a> 
+<img width="608" height="843" alt="image" src="https://github.com/user-attachments/assets/a887eeff-1959-42a9-9b9f-9774458b4b63" />
+
+This is a 3-in-a-row game inspired by <a href="https://www.brainbashers.com/show3inarow.asp">Brain Basher's Daily 3-in-a-Row Game</a>
+It was a project for 1st year Client Side programming class at NSCC in Spring of 2025.
+
+This app was made using React and Vite (more information below)
+
 
 
 #### React + Vite
